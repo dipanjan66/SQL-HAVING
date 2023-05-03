@@ -1,0 +1,47 @@
+
+-- HAVING Syntax:==>
+
+--NOTE:==> HAVING takes the Aggregate Function.
+
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+
+
+-- HAVING - comes after GROUP BY clause.
+--------------------------------------------------
+
+-- Example 01:==>
+
+SELECT company, SUM(sales)
+from finance_table
+WHERE company_name != 'Google'
+GROUP BY company
+HAVING SUM(sales) > 1000    -- HAVING takes the Aggregate Function.
+
+
+-- NOTE - HAVING allows to use Aggregate result as filter along with GROUP BY.
+
+--------------------------------------------------------
+
+
+-- Example 02:==>
+
+select customer_id, SUM(amount) 
+from payment
+group by customer_id
+having SUM(amount) > 100
+
+
+-----------------------------------------------------------
+
+-- Example 03:==>
+
+select store_id, COUNT(*)
+from customer
+GROUP BY store_id
+HAVING COUNT(*) > 300
+
